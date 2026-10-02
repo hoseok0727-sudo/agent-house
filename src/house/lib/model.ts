@@ -1,0 +1,18 @@
+import {z} from 'zod';
+export const scopeSchema=z.object({time:z.enum(['any','morning','evening']),activity:z.enum(['any','reading','social'])});
+export type Scope=z.infer<typeof scopeSchema>;
+export type Context={time:'morning'|'evening';activity:'reading'|'social'};
+export const effectIds=['quiet-chair','tea-for-two','display-book','add-plant','dim-lamp','keep-note'] as const;
+export const actionIds=['sit-quietly','start-chat','share-tea','recommend-book','offer-plant','interrupt-reading','leave-note'] as const;
+export type ActionId=typeof actionIds[number];export type EffectId=typeof effectIds[number];
+export type Profile={_id:string;_type:'agentProfile';_rev?:string;name:string;tagline:string;voice:string;traits:{privacy:number;sociability:number;curiosity:number;order:number;warmth:number};interests:string[];boundaries:{_key:string;label:string;time:'any'|'morning'|'evening';activity:'any'|'reading'|'social';blockedAction:ActionId;alternative:string}[]};
+export type HouseObject={_id:string;_type:'houseObject';name:string;kind:'desk'|'shelf'|'chair'|'plant'|'tea'|'memory';atlasIndex:number;description:string;actions:ActionId[];width:number};
+export type Event={_id:string;_type:'interactionEvent';profileId:string;profileRevision:string;profileFingerprint:string;personaAtTime:Pick<Profile,'name'|'voice'|'traits'|'interests'|'boundaries'>;responseText?:string;responseMode?:'authored-demo'|'sanity-agent'|'boundary-rule';objectId:string;action:ActionId;context:Context;detail:string;createdAt:string};
+export const reactionSchema=z.object({reply:z.string().min(1).max(500),stance:z.enum(['welcome','offer','decline']),evidenceIds:z.array(z.string()).min(1).max(12),proposal:z.object({statement:z.string().min(5).max(240),scope:scopeSchema,effectId:z.enum(effectIds),evidenceIds:z.array(z.string()).min(1).max(12)}).nullable()}).strict();
+export type Reaction=z.infer<typeof reactionSchema>;
+export type Proposal={_id:string;_type:'memoryProposal';_rev?:string;profileId:string;profileRevision:string;profileFingerprint:string;eventId:string;statement:string;scope:Scope;effectId:EffectId;evidenceIds:string[];reply:string;generationMode:'authored-demo'|'sanity-agent';status:'proposed'|'approved'|'rejected';createdAt:string};
+export type Memory={_id:string;_type:'approvedMemory';_rev?:string;profileId:string;proposalId:string;eventId:string;statement:string;scope:Scope;effectId:EffectId;evidenceIds:string[];status:'active'|'archived';approvedAt:string};
+export type Placement={_key:string;objectId:string;x:number;y:number;width:number;reason:string;sourceIds:string[];emphasis:boolean;visible:boolean};
+export type Snapshot={_id:string;_type:'houseSnapshot';_rev?:string;profileId:string;profileFingerprint:string;edition:number;placements:Placement[];memoryIds:string[]};
+export type HouseState={profile:Profile;objects:HouseObject[];events:Event[];proposals:Proposal[];memories:Memory[];snapshot:Snapshot};
+export const profileSchema=z.object({_id:z.string().min(1),_type:z.literal('agentProfile'),_rev:z.string().optional(),name:z.string().min(1).max(40),tagline:z.string().max(160),voice:z.string().max(500),traits:z.object({privacy:z.number().min(0).max(1),sociability:z.number().min(0).max(1),curiosity:z.number().min(0).max(1),order:z.number().min(0).max(1),warmth:z.number().min(0).max(1)}),interests:z.array(z.string().max(60)).max(12),boundaries:z.array(z.object({_key:z.string(),label:z.string(),time:z.enum(['any','morning','evening']),activity:z.enum(['any','reading','social']),blockedAction:z.enum(actionIds),alternative:z.string()}))});

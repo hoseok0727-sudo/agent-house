@@ -1,0 +1,2 @@
+import {defineConfig} from 'sanity';import {structureTool} from 'sanity/structure';import OwnerTool from './src/house/components/OwnerHouse';import {houseSchema} from './src/house/schema';import './src/house/style.css';
+export default defineConfig({name:'agent-house',title:'Agent House',projectId:'1jby3mjo',dataset:'production',plugins:[structureTool()],tools:[{name:'house',title:'Agent House',component:OwnerTool}],schema:{types:houseSchema}});

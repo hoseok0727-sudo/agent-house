@@ -1,0 +1,11 @@
+node_modules/
+.astro/
+dist/
+.env
+.env.*
+!.env.example
+.sanity/
+.sites-runtime/
+*.log
+
+docs/sdk-auth-reference.md
