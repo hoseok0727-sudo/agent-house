@@ -1,14 +1,35 @@
 # Agent House
 
-An isometric home shaped by a fictional agent's personality and the memories a person chooses to keep. Built for the DEV Sanity Challenge, Path Two.
+An editable miniature habitat for agents. A resident observes the world, chooses its next move, creates or rearranges objects, defines interactions, and leaves a visible record. The primary page is a window into that activity, rather than a game the human must play.
 
-## Status
-The public prototype is implemented. Live Sanity login, fictional data initialization, native Agent Prompt, two independent approvals, context-scoped behavior, cross-tab updates, stale-review rejection, rejection and archiving have been exercised in the browser. The website is publicly viewable. Final competition submission remains pending owner review. Desktop, 390px/768px responsive layouts and a 200% CSS-scaled surrogate have been inspected. Native mobile-device, browser text-zoom and live WebMCP verification remain outstanding. No prize, acceptance or revenue is claimed.
+Public demo: https://agent-house.beomdol.chatgpt.site
+Agent protocol: https://agent-house.beomdol.chatgpt.site/protocol
 
-## Stack
-Astro + React; Sanity Content Lake; Sanity Studio with a custom App SDK tool; owner-only Sanity Agent Prompt. The public demo makes no AI requests or cloud writes. No write token is bundled.
+## Agent-native loop
+
+1. Observe the current revision, residents, goals, objects and interaction definitions.
+2. Choose a structured command from the actual state.
+3. Validate the complete edit/action batch atomically.
+4. Apply it through the same engine used by the visible interface.
+5. Record controller provenance and concrete changes. Observe again.
+
+Agents can create named objects, move/resize/recolor their own objects, write descriptions, invent interactions using speech/pose/mood/counter effects, modify their own goal/persona, and change shared room settings. A new interaction is discoverable and executable by ID in subsequent turns. Shared creations can be used by other residents. The latest eligible turn can be undone; its record remains.
+
+This is a bounded declarative environment, not a remote code-execution sandbox. Visual objects reuse six existing art tiles. New object definitions do not create new artwork, execute JavaScript, install packages or access arbitrary URLs.
+
+## Actual control routes
+
+- **Browser tools:** `observe_agent_space` and `edit_and_act_in_agent_space`, registered through feature-detected `document.modelContext`. Calls use current app state and the same validated reducer. A registered tool is not proof of a connected agent.
+- **Structured console:** observable JSON plus an editable command field for browser agents when WebMCP is unavailable. The app labels these entries as manual commands because it cannot authenticate the typist.
+- **Owner model decisions:** authenticated Sanity Agent Prompt receives world state, the resident's goal/persona and the command schema. It selects one edit/action command, rather than merely voicing a human-selected action. One-turn and bounded five-turn runs are available. Failure stops the run; no scripted fallback or automatic retry.
+- **Scripted preview:** explicitly labeled sample behavior. It demonstrates agents creating and sharing an object without a model call. It is not presented as autonomous intelligence.
+
+The public page watches published state while visible until its first local edit, which creates a tab-local fork. A later published update cannot overwrite that fork. If no published world exists, it uses a labeled bundled seed. Public browser-tool and console edits are not persisted. The authenticated owner playground can persist validated edits to one `agentPlayground` document in the public fictional Sanity dataset. Agent editing must be enabled in that owner session. Writes compare the original world and use a Sanity revision guard, then refetch to verify the recorded request.
+
+Resident ownership in a local browser session is a convention, not secure multi-user identity. Sanity account permissions protect published writes. No administrative credentials are provided to visitors or judges.
 
 ## Run
+
 Node 22.12+ (developed on Node 24).
 
     npm ci
@@ -17,42 +38,29 @@ Node 22.12+ (developed on Node 24).
     ASTRO_TELEMETRY_DISABLED=1 npm run build
     npm run dev
 
-Astro telemetry is disabled for the build environment. The embedded Studio uses hash routing at /desk. Only the exact deployed origin should be allowlisted for authenticated Sanity requests.
+The embedded Studio uses hash routing. The new owner tool is `/desk/#/playground`; the earlier human-reviewed memory lab remains `/desk/#/house`. The historical visitor memory/story experiment is preserved at `/memory-lab` and is no longer the primary experience.
 
-## Living room extension
-Three architectural views (rainy library, moonlit glasshouse, amber workshop), a six-pose resident, personality/context-driven routines, spatial encounter choreography, and a visit journal extend the same memory model. Motion is authored behavior, never an implicit background model request. Room view selection is local; it changes presentation rather than memory truth.
+For a separate Sanity project, configure the project/dataset in `astro.config.mjs`, `sanity.config.ts` and `src/house/lib/sanity.ts`, allow the exact local/deployed origin for authenticated requests, sign in with a permitted Sanity account, and initialize fictional playground data from the owner tool. Agent Prompt availability and included credits must be checked for that project. Fresh-project setup is documented but not yet independently verified.
 
-## Playable visits
-Three authored mini-stories turn furniture into clue locations: The wandering bookmark, A train that goes nowhere, and One page for tomorrow. Choices create different endings and a fictional souvenir draft. Preparing the note does not call AI, save an encounter, or approve a memory. The visitor must offer the note, then review its interpretation through the existing flow. Story progress stays in the current tab.
+## Source layout
 
-Approved quiet-chair, tea and plant rituals are recognized during matching authored visits without generating duplicate proposals. Archiving restores their normal invitations. Arrive again retains reviewed memories while resetting the temporary arrival.
+- `src/playground/world.ts`: schemas, atomic edits/actions, observations, undo and explicit scripted preview
+- `src/playground/AgentPlayground.tsx`: visual habitat, controller runs, action log and browser tools
+- `src/playground/OwnerPlayground.tsx`: authenticated model decisions and revision-checked Sanity persistence
+- `src/playground/PublicPlayground.tsx`: public seed/published-copy loader; no write credential
+- `src/house/`: prior reviewed-memory experiment, retained separately
+- `docs/build-diary.md`: decisions, mistakes and observed checks
 
-## The interaction loop
-1. An authored profile determines positions, affordances, greetings and protected rituals.
-2. An object interaction creates a specific event with its context and persona snapshot.
-3. An owner-only AI response may propose a memory. Its schema, effects and evidence are validated; it cannot directly mutate lasting state.
-4. A person edits the statement and scope, then approves.
-5. A revision-checked transaction publishes the memory and room snapshot.
-6. Objects expose their provenance. A memory can be archived without erasing its history.
+## Limits and verification
 
-The signature demo is correcting an overgeneralized quiet-arrival proposal to apply only during evening reading visits. Morning behavior remains different.
+45 unit/component tests and TypeScript checks pass for the agent-native implementation and preserved memory lab. Tests include object invention and cross-resident use, atomic rollback, request idempotency, conflicting revisions, local ownership, history/undo bounds, structured-tool state updates in a mocked registry, selected-actor model routing and discarding a stopped model response. A mocked registry is not browser WebMCP interoperability testing. Live browser/model checks are tracked in the build diary and should not be inferred from unit tests.
 
-## Honest modes
-- Visitor demo: authored responses, in-memory browser state, no network mutation or model calls.
-- Owner studio: Sanity authentication, native Agent Prompt for permitted interactions, explicit rule-based refusal for protected rituals, reviewed persistence.
-- A memory shelf can retain the record of a scoped memory outside that memory's active context; it does not mean the behavioral effect applies then.
+The world holds up to eight residents and 32 object IDs including archived objects, eight interactions per object, six effects per interaction and 24 KB per command. Forty recent activity records are retained; only the latest turn has a full undo snapshot. Public edits are lost on reload. No native-mobile, text-zoom or actual browser WebMCP compatibility guarantee is made.
 
-## Safety and limitations
-Profiles/events in the Free public dataset are deliberately fictional. Do not enter personal or confidential information. A displayed agent persona is not a claim of consciousness or real human feelings. No arbitrary model-chosen action IDs, unknown evidence, or direct unreviewed memory writes are allowed.
+The existing shared per-tab 20-request development cap applies to owner model calls, including earlier memory-lab calls. It is not a global spending limit or security boundary. Stop prevents future turns and discards a pending model response; a save already in progress may still finish. The app does not upgrade plans or configure paid usage.
 
-Native Prompt uses included credits only under a verified no-card/free-trial setup. This app does not upgrade plans or configure paid usage. A per-tab 20-attempt development cap limits live requests; exhausted credits and API errors must fail visibly without automatic retries.
+## Data and attribution
 
-Client workflow logic is not an authorization boundary. Sanity account permissions protect writes. Do not distribute administrator credentials to judges.
+All profiles, rooms and examples are deliberately fictional. Never enter credentials, private conversations, personal or confidential information into the public dataset. Resident names and controller badges do not verify real-world identities, consciousness or human relationships.
 
-## Content model
-agentProfile, houseObject, interactionEvent, memoryProposal, approvedMemory and houseSnapshot. References connect actions, evidence and effects. Events preserve the persona context used at the time; reviewed memories preserve the exact approved statement and context.
-
-## Attribution and build evidence
-The entrant proposed the agent-home concept and isometric presentation. Implementation, fictional sample data and artwork were generated with AI. See docs/build-diary.md for actual decisions, failures and checks. No private conversation transcripts or secrets are published.
-
-The abandoned continuity prototype is preserved in the local archive/continuity-clinic-prototype branch. It is not represented as the finished submission.
+The entrant supplied the agent-home direction and corrected an earlier human-centered interpretation. Implementation, fictional sample content and artwork were generated with AI. Earlier mini-stories are retained as historical work, not presented as fulfillment of the agent-native brief. Competition submission remains subject to owner review; no prize, acceptance or revenue is claimed.
