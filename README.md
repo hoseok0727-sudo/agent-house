@@ -3,7 +3,7 @@
 An isometric home shaped by a fictional agent's personality and the memories a person chooses to keep. Built for the DEV Sanity Challenge, Path Two.
 
 ## Status
-The private prototype is implemented. Live Sanity login, fictional data initialization, native Agent Prompt, two independent approvals, context-scoped behavior, cross-tab updates, stale-review rejection, rejection and archiving have been exercised in the browser. The website is publicly viewable. Final competition submission remains pending owner review. Desktop, 390px/768px responsive layouts and a 200% CSS-scaled surrogate have been inspected. Native mobile-device, browser text-zoom and live WebMCP verification remain outstanding. No prize, acceptance or revenue is claimed.
+The public prototype is implemented. Live Sanity login, fictional data initialization, native Agent Prompt, two independent approvals, context-scoped behavior, cross-tab updates, stale-review rejection, rejection and archiving have been exercised in the browser. The website is publicly viewable. Final competition submission remains pending owner review. Desktop, 390px/768px responsive layouts and a 200% CSS-scaled surrogate have been inspected. Native mobile-device, browser text-zoom and live WebMCP verification remain outstanding. No prize, acceptance or revenue is claimed.
 
 ## Stack
 Astro + React; Sanity Content Lake; Sanity Studio with a custom App SDK tool; owner-only Sanity Agent Prompt. The public demo makes no AI requests or cloud writes. No write token is bundled.
@@ -21,6 +21,11 @@ Astro telemetry is disabled for the build environment. The embedded Studio uses 
 
 ## Living room extension
 Three architectural views (rainy library, moonlit glasshouse, amber workshop), a six-pose resident, personality/context-driven routines, spatial encounter choreography, and a visit journal extend the same memory model. Motion is authored behavior, never an implicit background model request. Room view selection is local; it changes presentation rather than memory truth.
+
+## Playable visits
+Three authored mini-stories turn furniture into clue locations: The wandering bookmark, A train that goes nowhere, and One page for tomorrow. Choices create different endings and a fictional souvenir draft. Preparing the note does not call AI, save an encounter, or approve a memory. The visitor must offer the note, then review its interpretation through the existing flow. Story progress stays in the current tab.
+
+Approved quiet-chair, tea and plant rituals are recognized during matching authored visits without generating duplicate proposals. Archiving restores their normal invitations. Arrive again retains reviewed memories while resetting the temporary arrival.
 
 ## The interaction loop
 1. An authored profile determines positions, affordances, greetings and protected rituals.

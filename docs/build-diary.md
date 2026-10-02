@@ -83,3 +83,12 @@ The browser captured the actual UI successfully, but neither the Blob download o
 ## Published capture recovered
 
 The hosting service later supplied an actual screenshot asset for the deployed version. It was downloaded through the supported file tool and visually inspected: the public rainy-library visitor UI, resident and three room selectors are present. The exact JPEG is now available as demo media. This resolves the required submission-media artifact without using the failed browser download paths.
+
+## October 2: playable visits
+Added three authored miniature stories using the existing furniture as clue locations: a wandering bookmark, an imaginary train journey, and an unfinished letter. Choices create a fictional souvenir draft; preparing it does not save an encounter, call a model, or approve a memory. Visitors can offer the note through the existing desk interaction and explicitly review the proposed memory. Story progress is tab-local. The same stories are authored even when the owner workspace is open.
+
+Approved quiet-company, tea and plant rituals now get a recognition response within their reviewed scope instead of another identical proposal. Archiving removes that recognition. Fixed the tea routine's precedence so an approved tea ritual does not occupy every animation beat. New UI compares the proposed before/after effect and lets a visitor arrive again while keeping reviewed memories in the tab.
+
+An independent code review caught an interrupted-flow bug: a completed owner response could clear a newer souvenir draft prepared during the request. Input cleanup now only clears the exact submitted detail. Mini-story choreography is labeled separately from validated encounters. Keyboard-operable buttons and mobile inspector navigation preserve access without animation. Final checks and production verification are recorded with the release.
+
+Pre-publication checks: 33 tests and TypeScript passed after the final fixes. Regression coverage includes keyboard focus after clue reveals, reset clearing a prepared souvenir, the entire mystery-to-reviewed-memory loop, retryable wrong answers, distinct branch souvenirs, and scoped recognition after approval/archive. The independent owner-request interruption reproduction passed after the conditional input-clear fix. Native mobile visual verification is still outstanding.
