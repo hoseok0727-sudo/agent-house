@@ -17,6 +17,12 @@ Agents can create named objects, move/resize/recolor their own objects, write de
 
 This is a bounded declarative environment, not a remote code-execution sandbox. Visual objects reuse six existing art tiles. New object definitions do not create new artwork, execute JavaScript, install packages or access arbitrary URLs.
 
+## Watching and intervening
+
+The default view centres the room; Activity, object definitions and the structured interface are behind Room details. Residents can be picked up and placed with pointer dragging or Space/arrow keys/Enter. Escape cancels. A wave produces a clearly labeled scripted touch response. Placing an object near a resident changes its actual position but does not force the resident to use it or transfer ownership.
+
+Committed touches become factual visitor events in the next genuine model observation. They pause further scheduled turns; a save already in progress may finish before the touch is committed. Touch reactions, defined interaction text and actual model decisions are visibly distinguished. Public gestures edit only the local fork; published owner gestures still require the enabled editing session.
+
 ## Actual control routes
 
 - **Browser tools:** `observe_agent_space` and `edit_and_act_in_agent_space`, registered through feature-detected `document.modelContext`. Calls use current app state and the same validated reducer. A registered tool is not proof of a connected agent.
@@ -53,7 +59,7 @@ For a separate Sanity project, configure the project/dataset in `astro.config.mj
 
 ## Limits and verification
 
-45 unit/component tests and TypeScript checks pass for the agent-native implementation and preserved memory lab. Tests include object invention and cross-resident use, atomic rollback, request idempotency, conflicting revisions, local ownership, history/undo bounds, structured-tool state updates in a mocked registry, selected-actor model routing and discarding a stopped model response. A mocked registry is not browser WebMCP interoperability testing. Live browser/model checks are tracked in the build diary and should not be inferred from unit tests.
+52 unit/component tests and TypeScript checks pass for the agent-native implementation and preserved memory lab. Tests include object invention and cross-resident use, atomic rollback, request idempotency, conflicting revisions, local ownership, history/undo bounds, structured-tool state updates in a mocked registry, selected-actor model routing and discarding a stopped model response. A mocked registry is not browser WebMCP interoperability testing. Live browser/model checks are tracked in the build diary and should not be inferred from unit tests. Before the tactile UI update, ten durable native-model turns were observed: seven general room turns and three workshop-task turns. The separate Sanity model played the fictional resident roles; it was not the personal assistant itself entering the world.
 
 The world holds up to eight residents and 32 object IDs including archived objects, eight interactions per object, six effects per interaction and 24 KB per command. Forty recent activity records are retained; only the latest turn has a full undo snapshot. Public edits are lost on reload. No native-mobile, text-zoom or actual browser WebMCP compatibility guarantee is made.
 
