@@ -1,0 +1,14 @@
+graph-theory regression tests: True
+    ring n=3: max agreements 2/3; forced violations=1; one best assignment=(0, 0, 1); #optima=6
+complete n=3: max agreements 2/3; forced violations=1; one best assignment=(0, 0, 1); #optima=6
+    ring n=4: max agreements 4/4; forced violations=0; one best assignment=(0, 1, 0, 1); #optima=2
+complete n=4: max agreements 4/6; forced violations=2; one best assignment=(0, 0, 1, 1); #optima=6
+    ring n=5: max agreements 4/5; forced violations=1; one best assignment=(0, 0, 1, 0, 1); #optima=10
+complete n=5: max agreements 6/10; forced violations=4; one best assignment=(0, 0, 0, 1, 1); #optima=20
+    ring n=6: max agreements 6/6; forced violations=0; one best assignment=(0, 1, 0, 1, 0, 1); #optima=2
+complete n=6: max agreements 9/15; forced violations=6; one best assignment=(0, 0, 0, 1, 1, 1); #optima=20
+    ring n=7: max agreements 6/7; forced violations=1; one best assignment=(0, 0, 1, 0, 1, 0, 1); #optima=14
+complete n=7: max agreements 12/21; forced violations=9; one best assignment=(0, 0, 0, 0, 1, 1, 1); #optima=70
+    ring n=8: max agreements 8/8; forced violations=0; one best assignment=(0, 1, 0, 1, 0, 1, 0, 1); #optima=2
+complete n=8: max agreements 16/28; forced violations=12; one best assignment=(0, 0, 0, 0, 1, 1, 1, 1); #optima=70
+Wrote network_constraints.csv
