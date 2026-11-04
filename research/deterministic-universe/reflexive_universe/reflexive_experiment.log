@@ -1,0 +1,26 @@
+regression tests: True
+               beta1: last q min=0.500000000, max=0.500000000, theoretical amplitude=0.000000000, criterion beta*c=1
+               beta2: last q min=0.490585588, max=0.509415525, theoretical amplitude=0.000000000, criterion beta*c=2
+             beta2.5: last q min=0.144794108, max=0.855205892, theoretical amplitude=0.710411783, criterion beta*c=2.5
+               beta4: last q min=0.021247988, max=0.978752012, theoretical amplitude=0.957504024, criterion beta*c=4
+    beta4 exposed40%: last q min=0.500000000, max=0.500000000, theoretical amplitude=0.000000000, criterion beta*c=1.6
+        beta4 damped: last q min=0.500000000, max=0.500000000, theoretical amplitude=0.957504024, criterion beta*c=4
+beta=2.01  m=0.121926113 qlow=0.439036943, qhigh=0.560963057
+beta=2.05  m=0.267850761 qlow=0.366074620, qhigh=0.633925380
+beta= 2.1  m=0.370705733 qlow=0.314647134, qhigh=0.685352866
+beta= 2.2  m=0.502940575 qlow=0.248529713, qhigh=0.751470287
+beta=   3  m=0.858559637 qlow=0.070720182, qhigh=0.929279818
+beta=   4  m=0.957504024 qlow=0.021247988, qhigh=0.978752012
+beta=   6  m=0.994901528 qlow=0.002549236, qhigh=0.997450764
+beta=   8  m=0.999325673 qlow=0.000337163, qhigh=0.999662837
+biased r=0.9 beta= 0 stationary q=0.900000000 H=0.468995594 bits
+biased r=0.9 beta= 1 stationary q=0.824621902 H=0.669860942 bits
+biased r=0.9 beta= 2 stationary q=0.760479124 H=0.794242605 bits
+biased r=0.9 beta= 4 stationary q=0.680274103 H=0.904083132 bits
+biased r=0.9 beta= 8 stationary q=0.609500673 H=0.965121026 bits
+biased r=0.9 beta=16 stationary q=0.561000086 H=0.989236640 bits
+biased r=0.9 beta=32 stationary q=0.532309474 H=0.996985835 bits
+finite universe 10007 microstates: 0.978715, 0.021285, 0.978715, 0.021285, 0.978715, 0.021285, 0.978715, 0.021285
+finite vs continuous abs pair extreme: 0.02128510042969921 0.9787148995703008
+max discrete fraction error: 4.755635505637734e-05
+Wrote trajectories.csv and phase_diagram.csv
