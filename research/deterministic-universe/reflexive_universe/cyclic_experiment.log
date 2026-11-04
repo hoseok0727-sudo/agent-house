@@ -1,0 +1,7 @@
+n=2, stationarity gap=0.00000000, period-n gap=0.00000000e+00, period-2n gap=0.00000000e+00, fixed alternating coloring=True
+n=3, stationarity gap=0.95750402, period-n gap=9.57504024e-01, period-2n gap=0.00000000e+00, fixed alternating coloring=False
+n=4, stationarity gap=0.00000000, period-n gap=0.00000000e+00, period-2n gap=0.00000000e+00, fixed alternating coloring=True
+n=5, stationarity gap=0.95750402, period-n gap=9.57504024e-01, period-2n gap=0.00000000e+00, fixed alternating coloring=False
+n=6, stationarity gap=0.00000000, period-n gap=0.00000000e+00, period-2n gap=0.00000000e+00, fixed alternating coloring=True
+n=7, stationarity gap=0.95750402, period-n gap=9.57504024e-01, period-2n gap=0.00000000e+00, fixed alternating coloring=False
+Wrote cyclic_network_trajectories.csv
