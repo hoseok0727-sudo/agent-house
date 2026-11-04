@@ -17,7 +17,7 @@ def predictor(history: list[int]) -> int:
             for j in range(1,L+1):
                 next_bit ^= C[j]&history[-j]
             return next_bit
-    # fallback to learned order-3/2/1 context frequencies with backoff and fixed ties
+    # fallback to learned order-3/2/1 context model with backoff and fixed ties
     for order in (3,2,1,0):
         if n<order+1: continue
         context=history[-order:] if order else []
