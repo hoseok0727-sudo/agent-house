@@ -1,0 +1,17 @@
+type,nodes,requirements,max_consistent,unavoidable_violations,perfectly_consistent,count_optimal_assignments
+cycle,3,3,2,1,False,6
+complete,3,3,2,1,False,6
+cycle,4,4,4,0,True,2
+complete,4,6,4,2,False,6
+cycle,5,5,4,1,False,10
+complete,5,10,6,4,False,20
+cycle,6,6,6,0,True,2
+complete,6,15,9,6,False,20
+cycle,7,7,6,1,False,14
+complete,7,21,12,9,False,70
+cycle,8,8,8,0,True,2
+complete,8,28,16,12,False,70
+cycle,9,9,8,1,False,18
+complete,9,36,20,16,False,252
+cycle,10,10,10,0,True,2
+complete,10,45,25,20,False,252
