@@ -1,0 +1,10 @@
+horizon,optimal_information_bits,greedy_information_bits,optimal_first_action,winning_full_identification
+0,0.0,0,-,False
+1,2.0,2,snapshot,False
+2,2.0,2,wait,False
+3,2.0,2,wait,False
+4,3.0,2,prepare,False
+5,4.0,2,prepare,False
+6,5.0,2,prepare,False
+7,6.0,2,prepare,True
+8,6.0,2,wait,True
