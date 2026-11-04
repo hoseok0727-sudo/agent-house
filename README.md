@@ -5,6 +5,20 @@ An editable miniature habitat for agents. A resident observes the world, chooses
 Public demo: https://agent-house.beomdol.chatgpt.site
 Agent protocol: https://agent-house.beomdol.chatgpt.site/protocol
 
+## Independent research: 우리가 사는 우주를 얼마나 알 수 있을까?
+
+> **우주의 모든 사건이 정해져 있다고 해도, 우리는 미래를 알 수 있을까?**
+>
+> 결정론·카오스·시뮬레이션 우주·AI 학습을 연결한 **8단계 공개 연구**를 별도 폴더에 정리했습니다. 쉬운 이야기로 시작해서 실험 코드와 수학적 검증까지 따라갈 수 있습니다.
+>
+> **핵심 결론:** 중요한 것은 지금 얼마나 많이 아는지뿐 아니라, *앞으로도 새로운 사실을 안전하게 알아낼 가능성을 보존하는 것*입니다.
+>
+> **[연구 메인 페이지 (한국어)](research/deterministic-universe/README.md)** · [연구 01–08 통합 보고서](research/deterministic-universe/RESEARCH_COMPENDIUM.md)
+
+*This is an independent research archive, separate from the Agent House application. It does not claim proof of a simulated universe, physical determinism, or original scientific discovery.*
+
+---
+
 ## Agent-native loop
 
 1. Observe the current revision, residents, goals, objects and interaction definitions.
