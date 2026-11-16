@@ -64,6 +64,7 @@
 | 06 | 안전하게 살아남으면서도 진실을 알아낼 수 있을까? | [실험](safe_observer_universe/experiment.py) · [노트](safe_observer_universe/research_note.md) |
 | 07 | 세상을 안정시키는 행동이 오히려 법칙을 감출까? | [실험](epistemic_closure_lab/experiment.py) · [노트](epistemic_closure_lab/research_note.md) |
 | 08 | 지금 많이 아는 선택이 미래의 배움을 망칠 수 있을까? | [실험](epistemic_viability_lab/experiment.py) · [노트](epistemic_viability_lab/research_note.md) |
+| **09 (추가)** | **3D 결정론적 가역 우주에서 거시적 혼합과 예측력의 시간변화** | [연구·코드·검증·반례](09_reversible_3d_gas/README.md) · [주장 검증대장](09_reversible_3d_gas/CLAIMS.md) |
 
 전체 수학적 정의, 실험 조건, 검증 범위, 반례와 참고문헌은 **[통합 연구 보고서](RESEARCH_COMPENDIUM.md)**에 정리했다.
 
