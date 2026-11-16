@@ -1,0 +1,3 @@
+L,block,probability,dynamics,seeds,t_final,mean_delta_macro,std_delta_macro,approximate_ci95_halfwidth,positive_seed_count,negative_seed_count
+16,4,0.35,ballistic,24,64,0.0,0.0,0.0,0,0
+16,4,0.35,collision,24,64,0.29193286790206985,0.0030487963641474803,0.0012197725855629372,24,0
